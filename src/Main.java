@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -25,29 +26,53 @@ public class Main {
 
 
 
-            System.out.print("Hey welcome to Robert's Body Emporium! \n\nWhat can we assist you with? \n");
+            System.out.print("\n\nHey welcome to Robert's Body Emporium! \nWhat can we assist you with? \n");
             carShopMenu.displayCarMenu();
-            ArrayList <Integer> runningTotal = new ArrayList<Integer>();
+            ArrayList <String> selectedMenuItems = new ArrayList<String>();
             boolean lookingAtMenu = true;
-            do{
-                for (int i = 0; i < runningTotal.size(); i++){
-                    System.out.println(runningTotal.get(i) + " \n");
-                }
-                int menuItem = input.nextInt();
-                input.nextLine();
-                runningTotal.add(menuItem);
-                System.out.print("Anything else? ");
-                String anythingElse = input.nextLine().toLowerCase();
-                if (anythingElse.equals("yes")){
-                    continue;
-                }else{
-                    break;
-                }
 
+            do {
+                for (int i = 5; i > selectedMenuItems.size(); i++){
+                    int response = input.nextInt();
+                    switch (response){
+                        case 1:
+                            selectedMenuItems.add("Dent Repair");
+                            break;
+                        case 2:
+                            selectedMenuItems.add("Paint Repair");
+                            break;
+                        case 3:
+                            selectedMenuItems.add("Windshield Repair");
+                            break;
+                        case 4:
+                            selectedMenuItems.add("Bumper Repair");
+                            break;
+                        case 5:
+                            selectedMenuItems.add("Fender Repair");
+                            break;
+                    }
+                    input.nextLine();
+                    System.out.print("Keep adding more services? (Y/N) ");
+                    String keepAddingServices = input.nextLine().toLowerCase();
+                    if (keepAddingServices.equals("y")){
+                        System.out.print("-->");
+                        continue;
+                    }else{
+                        lookingAtMenu = false;
+                        break;
+                    }
+                }
             }while(lookingAtMenu);
 
-            for (int i = 0; i < runningTotal.size(); i++){
-                System.out.println(runningTotal.get(i));
+
+            System.out.println("\n");
+            System.out.println("Tasks to be completed:");
+            for (int i = 0; i < selectedMenuItems.size(); i++){
+                if (i + 1 == selectedMenuItems.size()){ // used plus sign because index is always one less than size of arraylist, it needs to print regularly once it reaches end of arraylist
+                    System.out.print(selectedMenuItems.get(i));
+                }else{
+                    System.out.print(selectedMenuItems.get(i) + ", ");
+                }
             }
 
             Thread.sleep(2000);

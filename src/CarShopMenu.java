@@ -13,7 +13,8 @@ public class CarShopMenu {
                         "2)Paint Repair \n" +
                         "3)Windshield Repair \n" +
                         "4)Bumper Repair \n" +
-                        "5)Fender Repair \n");
+                        "5)Fender Repair");
+        System.out.print("-->\t");
     }
     public static void displayTotal(People people){
         System.out.println("Total: $500");
